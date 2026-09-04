@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Project CEB</title>
+
+    <link rel="stylesheet" href="style.css">
+    
+
+</head>
+
+<body>
+    <div class="left-image>
+    <img src="imagenes/left.png">
+    </div>
+    
+<header>
+    <div class="logo">
+    <img src="Imagenes Project ceb/ceb.png">
+    </div>
+<h1>Project CEB</h1>
+<div class="top-icons">
+    <i class="fa-solid fa-manifying-glass"></i>
+    <i class="fa-solid fa-bell"></i>
+    <i class="fa-solid fa-user-circle"></i>
+</div>
+
+</header>
+
+<div class="container">
+<div class="card">
+
+<h2>Iniciar Sesion</h2>
+
+<input type="email" placeholder="Correo electronico">
+
+<input
+    type="password"
+    id="password"
+    placeholder="Contraseña"
+>
+
+<label class="show-password">
+    <input type="checkbox" id="mostrarPassword">
+    <span class="checkmark"></span>
+    <span>Mostrar contraseña</span>
+</label>
+
+<button onclick="window.location.href='entrada administrador.html'">
+    Ingresar
+</button>
+
+</div>
+
+</div>
+
+<footer>
+    <p>Project CEB 2026</p>
+
+</footer>
+
+<script>
+    const password = document.getElementById("password");
+    const mostrarPassword = document.getElementById("mostrarPassword");
+
+    mostrarPassword.addEventListener("change", function () {
+        password.type = this.checked ? "text" : "password";
+    });
+</script>
+
+</body>
+</html>

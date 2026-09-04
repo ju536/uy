@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <meta charset="UTF-8">
+
+<title>Configuración</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <img src="Imagenes Project ceb/ciudadela.jpg">
+    </div>
+
+<h1>Project CEB</h1>
+
+<div class="top-icons">
+    <i class="fa-solid fa-manifying-glass"></i>
+    <i class="fa-solid fa-bell"></i>
+    <i class="fa-solid fa-user-circle"></i>
+</div>
+
+<nav>
+
+<a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+
+<a href="entrada.html"><i class="fa-solid fa-house"></i> Entrada</a>
+
+<a href="checklist.html"><i class="fa-solid fa-users"></i> Checklist</a>
+
+<a href="configuracion.html"><i class="fa-solid fa-gear"></i> Configuración</a>
+
+<a href="perfil.html"><i class="fa-solid fa-user"></i> Perfil</a>
+
+<a href="contacto.html"><i class="fa-solid fa-phone"></i> Contacto</a>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+    <h2>Configuración</h2>
+
+    <label>Modo Oscuro</label>
+
+    <input type="checkbox" id="darMode">
+
+    <br><br>
+
+    <label for="idioma">Idioma</label>
+
+<select id="idioma" onchange="window.location.href=this.value">
+    <option value="configuracion.html">Español</option>
+    <option value="configuracioningles.html">English</option>
+    <option value="configuracionportugues.html">Portugues</option>
+    <option>Alemán</option>
+</select>
+
+    <br><br>
+
+    <label>Notificaciones</label>
+
+    <input type="checkbox" checked>
+
+    <br><br>
+
+    <label>Avisos de Excusas</label>
+
+    <input type="checkbox">
+
+    <br><br>
+
+<button>Guardar Cambios</button>
+
+</div>
+
+</div>
+
+<footer>
+
+    <p>Project CEB</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Perfil</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <!-- FOTO DE PERFIL DEL ENCABEZADO -->
+    <div class="foto-perfil">
+        <img id="fotoPerfilHeader"
+             src="Imagenes Project ceb/imagen perfil.jpg"
+             alt="Foto de perfil">
+    </div>
+
+    <h1>Project CEB</h1>
+
+    <div class="top-icons">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-bell"></i>
+        <i class="fa-solid fa-user-circle"></i>
+    </div>
+
+    <nav>
+
+        <a href="indexportugues.html">
+            <i class="fa-solid fa-house"></i> Começar
+        </a>
+
+        <a href="entradaportugues.html">
+            <i class="fa-solid fa-house"></i> Entrada
+        </a>
+
+        <a href="checklistportugues.html">
+            <i class="fa-solid fa-users"></i> Lista de verificação
+        </a>
+
+        <a href="configuracionportugues.html">
+            <i class="fa-solid fa-gear"></i> Configuração
+        </a>
+
+        <a href="perfilportugues.html">
+            <i class="fa-solid fa-user"></i> Perfil
+        </a>
+
+        <a href="contactoportugues.html">
+            <i class="fa-solid fa-phone"></i> Contato
+        </a>
+
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <div class="card perfil">
+
+        <!-- FOTO DE PERFIL DE ABAIXO -->
+        <div class="foto-perfil">
+            <img id="fotoPerfil"
+                 src="Imagenes Project ceb/imagen perfil.jpg"
+                 alt="Foto de perfil">
+        </div>
+
+
+        <!-- TÍTULO -->
+        <h2>Perfil do responsável</h2>
+
+
+        <!-- DATOS DEL PERFIL -->
+        <div class="datos-perfil">
+
+            <p>
+                <strong>Sobrenomes:</strong>
+                <span id="apellidos">Lopez Urrego</span>
+            </p>
+
+            <p>
+                <strong>Nomes:</strong>
+                <span id="nombres">Maria Carme</span>
+            </p>
+
+            <p>
+                <strong>Documento:</strong>
+                <span id="documento">5235484</span>
+            </p>
+
+            <p>
+                <strong>Telefone:</strong>
+                <span id="telefono">+57 3041104864</span>
+            </p>
+
+            <p>
+                <strong>Correio:</strong>
+                <span id="correo">LopezMaria@gmail.com</span>
+            </p>
+
+        </div>
+
+
+        <!-- INPUT PARA SELECCIONAR FOTO -->
+        <input
+            type="file"
+            id="inputFoto"
+            accept="image/*"
+            style="display: none;"
+        >
+
+
+        <!-- BOTONES -->
+        <div class="botones-perfil">
+
+            <button type="button" id="btnCambiarFoto">
+                Alterar foto
+            </button>
+
+            <button type="button" id="btnEditarPerfil">
+                Editar Perfil
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <p>Project CEB</p>
+
+</footer>
+
+
+<script>
+
+// ======================================
+// ELEMENTOS
+// ======================================
+
+const btnCambiarFoto =
+    document.getElementById("btnCambiarFoto");
+
+const inputFoto =
+    document.getElementById("inputFoto");
+
+const fotoPerfil =
+    document.getElementById("fotoPerfil");
+
+const fotoPerfilHeader =
+    document.getElementById("fotoPerfilHeader");
+
+
+// ======================================
+// ALTERAR FOTO
+// ======================================
+
+btnCambiarFoto.addEventListener("click", function() {
+
+    inputFoto.click();
+
+});
+
+
+inputFoto.addEventListener("change", function() {
+
+    const archivo = inputFoto.files[0];
+
+    if (archivo) {
+
+        const lector = new FileReader();
+
+        lector.onload = function(evento) {
+
+            const novaFoto = evento.target.result;
+
+            // Alterar foto de baixo
+            fotoPerfil.src = novaFoto;
+
+            // Alterar foto de cima
+            fotoPerfilHeader.src = novaFoto;
+
+            // Guardar foto
+            localStorage.setItem("fotoPerfil", novaFoto);
+
+        };
+
+        lector.readAsDataURL(archivo);
+
+    }
+
+});
+
+
+// ======================================
+// CARREGAR FOTO GUARDADA
+// ======================================
+
+window.addEventListener("load", function() {
+
+    const fotoGuardada =
+        localStorage.getItem("fotoPerfil");
+
+    if (fotoGuardada) {
+
+        // Foto de baixo
+        fotoPerfil.src = fotoGuardada;
+
+        // Foto de cima
+        fotoPerfilHeader.src = fotoGuardada;
+
+    }
+
+});
+
+
+// ======================================
+// EDITAR PERFIL
+// ======================================
+
+const btnEditarPerfil =
+    document.getElementById("btnEditarPerfil");
+
+
+btnEditarPerfil.addEventListener("click", function() {
+
+    let apellidos = prompt(
+        "Digite seus sobrenomes:",
+        document.getElementById("apellidos").textContent
+    );
+
+    if (apellidos !== null && apellidos.trim() !== "") {
+
+        document.getElementById("apellidos").textContent =
+            apellidos;
+
+        localStorage.setItem("apellidos", apellidos);
+
+    }
+
+
+    let nombres = prompt(
+        "Digite seus nomes:",
+        document.getElementById("nombres").textContent
+    );
+
+    if (nombres !== null && nombres.trim() !== "") {
+
+        document.getElementById("nombres").textContent =
+            nombres;
+
+        localStorage.setItem("nombres", nombres);
+
+    }
+
+
+    let documento = prompt(
+        "Digite seu documento:",
+        document.getElementById("documento").textContent
+    );
+
+    if (documento !== null && documento.trim() !== "") {
+
+        document.getElementById("documento").textContent =
+            documento;
+
+        localStorage.setItem("documento", documento);
+
+    }
+
+
+    let telefone = prompt(
+        "Digite seu telefone:",
+        document.getElementById("telefono").textContent
+    );
+
+    if (telefone !== null && telefone.trim() !== "") {
+
+        document.getElementById("telefono").textContent =
+            telefone;
+
+        localStorage.setItem("telefono", telefone);
+
+    }
+
+
+    let correo = prompt(
+        "Digite seu e-mail:",
+        document.getElementById("correo").textContent
+    );
+
+    if (correo !== null && correo.trim() !== "") {
+
+        document.getElementById("correo").textContent =
+            correo;
+
+        localStorage.setItem("correo", correo);
+
+    }
+
+});
+
+
+// ======================================
+// CARREGAR DADOS GUARDADOS
+// ======================================
+
+window.addEventListener("load", function() {
+
+    if (localStorage.getItem("apellidos")) {
+
+        document.getElementById("apellidos").textContent =
+            localStorage.getItem("apellidos");
+
+    }
+
+    if (localStorage.getItem("nombres")) {
+
+        document.getElementById("nombres").textContent =
+            localStorage.getItem("nombres");
+
+    }
+
+    if (localStorage.getItem("documento")) {
+
+        document.getElementById("documento").textContent =
+            localStorage.getItem("documento");
+
+    }
+
+    if (localStorage.getItem("telefono")) {
+
+        document.getElementById("telefono").textContent =
+            localStorage.getItem("telefono");
+
+    }
+
+    if (localStorage.getItem("correo")) {
+
+        document.getElementById("correo").textContent =
+            localStorage.getItem("correo");
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>

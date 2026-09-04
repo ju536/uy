@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <meta charset="UTF-8">
+
+<title>Perfil</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body>
+
+<header>
+
+<!-- FOTO DE PERFIL -->
+<div class="foto-perfil">
+    <img id="fotoPerfil" src="Imagenes Project ceb/imagen perfil.jpg">
+</div>
+
+
+<h1>Project CEB</h1>
+
+<div class="top-icons">
+    <i class="fa-solid fa-manifying-glass"></i>
+    <i class="fa-solid fa-bell"></i>
+    <i class="fa-solid fa-user-circle"></i>
+</div>
+
+<nav>
+    <a href="entrada administrador.html">Entrada Admin</a>
+    <a href="configuracion admin.html">Configuración</a>
+    <a href="perfil admin.html">Perfil</a>
+
+    <button class="btn-cerrar-sesion" onclick="cerrarSesion()">
+    Cerrar sesión
+</button>
+</nav>
+
+</header>
+
+<div class="container">
+
+<div class="card perfil">
+    
+    <i class="fa-solid fa-user-circle perfil-icon"></i>
+
+    
+    
+    <!-- TÍTULO -->
+    <h2>Perfil del Acudiente</h2>
+
+    <!-- DATOS DEL PERFIL -->
+<div class="datos-perfil">
+
+    <p>
+        <strong>Apellidos:</strong>
+        <span id="apellidos">Pinilla Linares</span>
+    </p>
+
+    <p>
+        <strong>Nombres:</strong>
+        <span id="nombres">Danna Michelle</span>
+    </p>
+
+    <p>
+        <strong>Documento:</strong>
+        <span id="documento">1013631265</span>
+    </p>
+
+    <p>
+        <strong>Telefono:</strong>
+        <span id="telefono">+57 3204987026</span>
+    </p>
+
+    <p>
+        <strong>Correo:</strong>
+        <span id="correo">dpinilla039@gmail.com</span>
+    </p>
+
+</div>
+
+<!-- INPUT PARA SELECCIONAR FOTO -->
+<input 
+    type="file" 
+    id="inputFoto" 
+    accept="image/*" 
+    style="display: none;"
+>
+
+<!-- BOTONES -->
+<div class="botones-perfil">
+
+    <button type="button" id="btnCambiarFoto">
+        Cambiar Foto
+    </button>
+
+    <button type="button" id="btnEditarPerfil">
+        Editar Perfil
+    </button>
+
+</div>
+
+<footer>
+
+    <p>Project CEB</p>
+
+</footer>
+
+<script>
+
+const btnCambiarFoto = document.getElementById("btnCambiarFoto");
+const inputFoto = document.getElementById("inputFoto");
+
+const fotoPerfil = document.getElementById("fotoPerfil");
+const fotoPerfilHeader = document.getElementById("fotoPerfilHeader");
+
+
+// ==========================
+// CAMBIAR FOTO
+// ==========================
+
+btnCambiarFoto.addEventListener("click", function() {
+
+    inputFoto.click();
+
+});
+
+
+inputFoto.addEventListener("change", function() {
+
+    const archivo = inputFoto.files[0];
+
+    if (archivo) {
+
+        const lector = new FileReader();
+
+        lector.onload = function(evento) {
+
+            const nuevaFoto = evento.target.result;
+
+            // Cambiar foto de abajo
+            fotoPerfil.src = nuevaFoto;
+
+            // Cambiar foto de arriba
+            fotoPerfilHeader.src = nuevaFoto;
+
+            // Guardar la foto
+            localStorage.setItem("fotoPerfil", nuevaFoto);
+
+        };
+
+        lector.readAsDataURL(archivo);
+
+    }
+
+});
+
+
+// ==========================
+// CARGAR FOTO GUARDADA
+// ==========================
+
+window.addEventListener("load", function() {
+
+    const fotoGuardada = localStorage.getItem("fotoPerfil");
+
+    if (fotoGuardada) {
+
+        // Foto de abajo
+        fotoPerfil.src = fotoGuardada;
+
+        // Foto de arriba
+        fotoPerfilHeader.src = fotoGuardada;
+
+    }
+
+});
+
+</script>
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
